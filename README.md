@@ -2,7 +2,7 @@
 Reddit command-line client
 
 # Installation
-```pip install git+https://github.com/mermoldy/reddit-cli.git```
+```pip install git+https://github.com/Scalr/test-reddit.git```
 
 # Usage:
 
