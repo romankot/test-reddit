@@ -44,7 +44,7 @@ def search(search_query, **kwargs):
 @click.argument('name', metavar='<name>')
 @click.option('--limit', '-l', default=10, help='Limit articles count'
               '(default: 10)')
-@click.option('--order', '-o', default='hot', help='Choices: hot new rising'
+@click.option('--order', '-o', default='hot', help='Choices: hot new rising '
               'top controversial (default: hot)')
 def subreddit(name, **kwargs):
     """Display subreddit submissions"""

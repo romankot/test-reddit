@@ -21,9 +21,8 @@ def _api_call(path, params=None):
     resp = requests.get(u'{}/{}.json'.format(settings.REDDIT_API_URL, path),
                         params=params,
                         headers={'User-agent': settings.USER_AGENT}).json()
-
     if not resp or u'error' in resp:
-        raise RedditApiEror(message=resp.get('message', ''))
+        raise RedditApiError(message=resp.get('message', ''))
 
     return resp
 
@@ -38,8 +37,10 @@ def search_subreddits(query=None, limit=100):
         raise RedditApiError(message='Invalid response')
 
     children = resp['data']['children']
-    if len(children) != 0:
+    if len(children) == 0:
         raise SubredditNotFound(message=query)
+    elif len(children) > limit:
+        children = children[:limit]
 
     return (item['data'] for item in children)
 
